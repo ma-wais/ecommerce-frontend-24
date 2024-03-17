@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Swiper className="mySwiper" loop={true} autoplay={{ delay: 5000000 }}>
+      <Swiper className="mySwiper" loop={true} autoplay={{ delay: 3000 }}>
         {info?.images.map((image, index) => (
           <SwiperSlide key={index}>
             <div className="slide-container" style={{ backgroundImage: `url(${image})` }}>
@@ -50,7 +50,7 @@ const Home = () => {
       </h1>
 
       <main>
-        <Swiper className="mySwiper" slidesPerView={4} loop={true} grabCursor={true} 
+        <Swiper className="mySwiper" slidesPerView={4} loop={true} grabCursor={true} autoplay={{ delay: 3000 }}
         breakpoints={{
           280: {
             slidesPerView: 1,
