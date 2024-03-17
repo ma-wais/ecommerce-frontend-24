@@ -8,8 +8,8 @@
     background-color:#f1f1f1;
     z-index: 10;
     >div{
-        width: 23%;
-        min-width: 300px;
+        width: 20%;
+        min-width: 230px;
         height: 250px;
         h4{
             padding: 10px 0;
@@ -34,21 +34,21 @@
         height: 100px;
         background-color: #4d4747;
         color: #fff;
-        padding: 0 80px;
+        padding: 0 3%;
         a{
             text-decoration: none;
-            color: #5ca5b8;
+            color: #bdbdbd;
         }
 }
 .footerIcon{
     margin: 5px 2px;
     padding: 10px;
     font-size: 40px;
-    background-color:  #38a9dd;
-    color: #fff;
+    background-color:transparent;
+    color: #707070;
     border-radius: 40%;
     cursor: pointer;
     &:hover{
-        background-color:rgb(50, 144, 233);
+        color: black;
     }
 }

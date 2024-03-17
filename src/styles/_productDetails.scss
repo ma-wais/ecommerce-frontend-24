@@ -5,7 +5,7 @@
     border-radius: 5px;
     .Form {
     flex-grow: 1;
-    padding: 20px;
+    margin-left: 40px;
     h2, p{
         margin: 20px 0;
     }
@@ -37,20 +37,27 @@
     background-color: #0056b3;
   }
 }
-
 }
   .productDetails img {
     width: 50%;
     aspect-ratio: 1;
     height: auto;
-    margin-right: 20px; /* Adjust the margin as needed */
+    margin-right: 20px; 
     border-radius: 50px;
   }
 
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 800px) {
     .productDetails {
       flex-direction: column;
       align-items: center;
+
+      img{
+        width: 80%;
+      }
+      .Form {
+        margin-left: 0;
+        transform: translateX(-30px);
+      }
     }
   }

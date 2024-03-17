@@ -47,7 +47,7 @@ const Header = ({ user }: PropsType) => {
         <div >
             {/* <Link className="navlinks" to="/#" >Home</Link> */}
             <div style={{position:"relative", display:"inline"}}>
-            <button className="navlinks" style={{backgroundColor:"transparent",display:"inline", color:"black"}} onClick={() => setIsOpen2((prev) => !prev)}>
+            <button className="navlinks" onClick={() => setIsOpen2((prev) => !prev)}>
               Categories
             </button>
             <dialog open={isOpen2} className="dialog">

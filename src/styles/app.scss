@@ -22,7 +22,7 @@ a {
   color: black;
 }
 
-$color1: white;
+$color1: rgb(155, 155, 155);
 $color2: rgb(46, 46, 46);
 $color3: rgb(0, 104, 136);
 
@@ -94,6 +94,7 @@ $color3: rgb(0, 104, 136);
   z-index: 500;
   button  {
     margin: 0 1vmax ;
+    background-color: #fff;
     border: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
@@ -129,7 +130,7 @@ $color3: rgb(0, 104, 136);
   margin: 0 1vmax ;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.12rem;
 &:hover{
   color: orange;
 }}
@@ -383,5 +384,14 @@ $color3: rgb(0, 104, 136);
   }
   100% {
     opacity: 0.6;
+  }
+}
+
+@media screen and (width<= 700px) {
+  html{
+    font-size: 10px;
+  }
+  .navlinks{
+    display: none;
   }
 }

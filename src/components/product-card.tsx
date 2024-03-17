@@ -50,19 +50,19 @@ const ProductCard = ({
           <tbody> 
             <tr>
               <th>Name</th>
-              <th>{name}</th>
+              <td>{name}</td>
             </tr>
             <tr>
               <th>Price</th>
-              <th>{price}</th>
+              <td>{price}</td>
             </tr>
             <tr>
               <th>Stock</th>
-            <th>{stock}</th>
+            <td>{stock}</td>
             </tr>
             <tr>
               <th>Category</th>
-              <th>{`${category}`}</th>
+              <td>{`${category}`}</td>
             </tr>
             {/* <tr>
               <th>Something</th>

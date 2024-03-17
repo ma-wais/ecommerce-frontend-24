@@ -1,35 +1,37 @@
-import {BsTwitter,BsFacebook,BsInstagram,BsLinkedin,BsSkype } from 'react-icons/bs'
+import {BsTwitter,BsFacebook,BsInstagram,BsLinkedin } from 'react-icons/bs'
 
 const Footer = () => {
   return (
     <>
     <div id="footer">
         <div>
-            <h3>ARSHA</h3>
+            <h3>Ramie</h3>
             <p>A108 Adam Street
                 New York, NY 535022
                 United States</p>
         </div>
         <div>
             <h4>Useful Links</h4>
-            <a href="#home">Home</a>
-            <a href="#home">About US</a>
-            <a href="#home">Services</a>
-            <a href="#home">Terms and Conditions</a>
-            <a href="#home">Privacy Policy</a>
+            <a href="#">Home</a>
+            <a href="#">About US</a>
+            <a href="#">Services</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Privacy Policy</a>
         </div>
         <div>
-            <h4>Our Services</h4>
-            <a href="#home">Web Design</a>
-            <a href="#home">Web Development</a>
-            <a href="#home">Product Manegement</a>
-            <a href="#home">Marketing</a>
-            <a href="#home">Graphic Design</a>
+            <h4>Services</h4>
+            <a href="">Web Design</a>
+            <a href="">Web Development</a>
+            <a href="">Product Manegement</a>
+            <a href="">Marketing</a>
+            <a href="">Graphic Design</a>
         </div>
         <div>
-            <h4>Our Social Networks</h4>
+            <h4>Social Networks</h4>
             <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <BsTwitter className='footerIcon'/> <BsFacebook className='footerIcon'/> <BsInstagram className='footerIcon'/> <BsSkype className='footerIcon'/><BsLinkedin className='footerIcon'/>
+            <BsTwitter className='footerIcon'/> <BsFacebook className='footerIcon'/> <BsInstagram className='footerIcon'/> 
+            {/* <BsSkype className='footerIcon'/> */}
+            <BsLinkedin className='footerIcon'/>
         </div>
         
     </div>

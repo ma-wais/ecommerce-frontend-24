@@ -25,15 +25,21 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Swiper className="mySwiper" loop={true}>
-        {info?.images.map((i) => (
-          <SwiperSlide key={i}
-          >
-            <img src={i} alt="" style={{width: "100%", height: "100vh" }} />
-            </SwiperSlide>
+      <Swiper className="mySwiper" loop={true} autoplay={{ delay: 5000000 }}>
+        {info?.images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="slide-container" style={{ backgroundImage: `url(${image})` }}>
+            <div className="container">
+              <h1 className="text"><p>{info?.price[index]}</p><span>{info?.text[index]}</span></h1>
+              <h1 className="text"><p>{info?.price2[index]}</p><span>{info?.text2[index]}</span></h1>
+              <h1 className="text"><p>{info?.price3[index]}</p><span>{info?.text3[index]}</span></h1>
+              <h1 className="text"><p>{info?.price4[index]}</p><span><a>{info?.text4[index]}</a></span></h1>
+              <h1 className="text"><p>{info?.price5[index]}</p><span><a>{info?.text5[index]}</a></span></h1>
+            </div>
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
-      {/* <section></section> */}
 
       <div style={{ padding: "0 100px"}}>
       <h1>
@@ -46,20 +52,17 @@ const Home = () => {
       <main>
         <Swiper className="mySwiper" slidesPerView={4} loop={true} grabCursor={true} 
         breakpoints={{
-          320: {
+          280: {
             slidesPerView: 1,
           },
-          710: {
+          660: {
             slidesPerView: 2,
           },
-          950: {
+          900: {
             slidesPerView: 3,
           },
-          1240: {
+          1150: {
             slidesPerView: 4,
-          },
-          1400: {
-            slidesPerView: 5,
           }
         }}>
         {isLoading ? (
