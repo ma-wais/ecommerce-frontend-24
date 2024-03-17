@@ -4,7 +4,9 @@ import App from "./App.tsx";
 import "./styles/app.scss";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
+import { register } from 'swiper/element/bundle';
 
+register();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>

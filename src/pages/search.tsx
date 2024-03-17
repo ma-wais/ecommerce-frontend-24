@@ -119,6 +119,7 @@ const Search = () => {
                 stock={i.stock}
                 handler={addToCartHandler}
                 photo={i.photo}
+                category={i.category}
               />
             ))}
           </div>

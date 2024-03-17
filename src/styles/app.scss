@@ -33,12 +33,29 @@ $color3: rgb(0, 104, 136);
   color: rgb(0, 195, 0);
 }
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
 @import "admin-styles/mixin";
 @import "home";
 @import "cart";
 @import "shipping";
 @import "login";
 @import "search";
+@import "footer";
+@import "productDetails";
 @import "admin-styles/dashboard";
 @import "admin-styles/products";
 @import "admin-styles/chart";
@@ -63,39 +80,81 @@ $color3: rgb(0, 104, 136);
   text-align: center;
 }
 
-.header {
-  @include flex(row, flex-end, stretch, 1.2rem);
-  padding: 1rem;
-  a {
-    color: $color2;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-
-    &:hover {
-      color: $color3;
-    }
+.Nav {
+  position: sticky;
+  width: 100%;
+  padding: 1vmax;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  z-index: 500;
+  button  {
+    margin: 0 1vmax ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
   }
-
-  button {
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    background-color: transparent;
-    &:hover {
-      color: $color3;
-    }
+    dialog{
+      position: absolute;
+      border: none;
+      div{
+        padding-top: 10px;
+        :link{
+          margin: 10px;
+        }
+        button{
+          background-color: transparent;
+        }
+      }
   }
-
-  dialog {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100px;
-    position: absolute;
-    left: calc(100% - 100px);
-    top: 8%;
-    > div {
-      @include flex(column, flex-start, center, 0.25rem);
+  
+}
+.nav{
+  margin-right: 40px;
+   svg{
+    fill:gray ;
+    font-size: 22px;
+    margin: 0 10px;
+  }
+}
+.navlinks {
+  text-decoration: none;
+  margin: 0 1vmax ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  
+}
+.navlinks:hover{
+  color: orange;
+}
+.logo{
+  width: 90px;
+  height: 90px;
+  margin-left: 25px;
+  cursor: pointer;
+  position: relative;
+}
+#logoImage{
+  height: 100%;
+  width: 100%;
+}
+.nav svg{
+  fill: rgb(94, 91, 91);
+  &:hover{
+    fill: black;
+  }
+}
+.dialog{
+  position: absolute;
+  div{
+    padding-top: 10px;
+    :link{
+      margin: 20px;
+    }
+    button{
+      background-color: transparent;
     }
   }
 }
@@ -244,7 +303,7 @@ $color3: rgb(0, 104, 136);
 #hamburger {
   display: grid;
   place-items: center;
-  @include square(3rem);
+  @include square(2.5rem);
   border: none;
   outline: none;
   cursor: pointer;
@@ -254,20 +313,21 @@ $color3: rgb(0, 104, 136);
   left: 1rem;
   font-size: 2rem;
   background-color: white;
-  border-radius: 50%;
+  border-radius: 10px;
   z-index: 9;
 }
 
 #close-sidebar {
-  width: 80%;
-  margin: 1rem auto;
+  width: 50px;
+  margin-left: 80%;
   display: block;
   padding: 0.75rem;
+  font-size: 25px;
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: rgb(168, 2, 2);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(26, 90, 228);
   border-radius: 10px;
 }
 
@@ -310,7 +370,6 @@ $color3: rgb(0, 104, 136);
     transform: translate(-50%, -20%);
   }
 }
-
 @keyframes skeleon-loading {
   0% {
     opacity: 0.6;

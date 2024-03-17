@@ -13,6 +13,7 @@ import {
   RiCoupon3Fill,
   RiDashboardFill,
   RiShoppingBag3Fill,
+  RiCloseFill
 } from "react-icons/ri";
 import { Link, Location, useLocation } from "react-router-dom";
 import { IconType } from "react-icons";
@@ -59,16 +60,17 @@ const AdminSidebar = () => {
             : {}
         }
       >
+        {phoneActive && (
+          <button id="close-sidebar" onClick={() => setShowModal(false)}>
+            <RiCloseFill />
+          </button>
+        )}
         <h2>Logo.</h2>
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />
 
-        {phoneActive && (
-          <button id="close-sidebar" onClick={() => setShowModal(false)}>
-            Close
-          </button>
-        )}
+        
       </aside>
     </>
   );

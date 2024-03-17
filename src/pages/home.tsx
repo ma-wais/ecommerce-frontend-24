@@ -6,6 +6,9 @@ import ProductCard from "../components/product-card";
 import { useLatestProductsQuery } from "../redux/api/productAPI";
 import { addToCart } from "../redux/reducer/cartReducer";
 import { CartItem } from "../types/types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import info from "../components/data.json"
 
 const Home = () => {
   const { data, isLoading, isError } = useLatestProductsQuery("");
@@ -22,8 +25,17 @@ const Home = () => {
 
   return (
     <div className="home">
-      <section></section>
+      <Swiper className="mySwiper" loop={true}>
+        {info?.images.map((i) => (
+          <SwiperSlide key={i}
+          >
+            <img src={i} alt="" style={{width: "100%", height: "100vh" }} />
+            </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* <section></section> */}
 
+      <div style={{ padding: "0 100px"}}>
       <h1>
         Latest Products
         <Link to="/search" className="findmore">
@@ -32,22 +44,78 @@ const Home = () => {
       </h1>
 
       <main>
+        <Swiper className="mySwiper" slidesPerView={4} loop={true} grabCursor={true} 
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          710: {
+            slidesPerView: 2,
+          },
+          950: {
+            slidesPerView: 3,
+          },
+          1240: {
+            slidesPerView: 4,
+          },
+          1400: {
+            slidesPerView: 5,
+          }
+        }}>
         {isLoading ? (
           <Skeleton width="80vw" />
         ) : (
-          data?.products.map((i) => (
-            <ProductCard
-              key={i._id}
-              productId={i._id}
-              name={i.name}
-              price={i.price}
-              stock={i.stock}
-              handler={addToCartHandler}
-              photo={i.photo}
-            />
-          ))
-        )}
+          <>
+            {data?.products.map((product) => (
+              <SwiperSlide key={product._id}
+
+              >
+                <ProductCard
+                  productId={product._id}
+                  name={product.name}
+                  price={product.price}
+                  stock={product.stock}
+                  handler={addToCartHandler}
+                  photo={product.photo}
+                  category={product.category}
+                />
+                
+        </SwiperSlide>
+      ))}
+    </>
+  )}
+      </Swiper>
+
       </main>
+      </div>
+      <div className="featuredProducts">
+        <p>
+          Featured
+        </p>
+      <main>
+       
+        {isLoading ? (
+          <Skeleton width="80vw" />
+        ) : (
+          <>
+            {data?.products.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  productId={product._id}
+                  name={product.name}
+                  price={product.price}
+                  stock={product.stock}
+                  handler={addToCartHandler}
+                  photo={product.photo}
+                  category={product.category}
+                />
+                
+      ))}
+    </>
+  )}
+
+      </main>
+      </div>
     </div>
   );
 };

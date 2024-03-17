@@ -5,6 +5,7 @@
     height: 4rem;
     @include flex(row, unset);
     padding: 0 1rem;
+    margin: 0% 20px 0 40px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.37);
     > input {
       margin-right: auto;

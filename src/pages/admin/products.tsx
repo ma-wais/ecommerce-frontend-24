@@ -76,7 +76,7 @@ const Products = () => {
   )();
 
   return (
-    <div className="admin-container">
+    <div className="admin-container" style={{marginBottom:"130px"}}>
       <AdminSidebar />
       <main>{isLoading ? <Skeleton length={20} /> : Table}</main>
       <Link to="/admin/product/new" className="create-product-btn">

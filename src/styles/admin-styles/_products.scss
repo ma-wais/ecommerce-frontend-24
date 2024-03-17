@@ -8,7 +8,7 @@
 .create-product-btn {
   position: fixed;
   right: 2rem;
-  top: 2rem;
+  top: 4rem;
   @include square(2.5rem);
   @include flex(row, center, center, 0);
   border-radius: 50%;
@@ -35,6 +35,7 @@
 .product-management {
   @include flex(row, center, unset);
   padding: 4rem;
+  
 
   > section {
     overflow-y: auto;

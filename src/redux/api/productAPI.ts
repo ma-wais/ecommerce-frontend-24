@@ -30,11 +30,7 @@ export const productAPI = createApi({
       query: () => `categories`,
       providesTags: ["product"],
     }),
-
-    searchProducts: builder.query<
-      SearchProductsResponse,
-      SearchProductsRequest
-    >({
+    searchProducts: builder.query<SearchProductsResponse, SearchProductsRequest>({
       query: ({ price, search, sort, category, page }) => {
         let base = `all?search=${search}&page=${page}`;
 
