@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useProductDetailsQuery } from "../redux/api/productAPI";
 import { Skeleton } from "../components/loader";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { server } from "../redux/store";
 import { CartItem } from "../types/types";
@@ -11,10 +11,11 @@ import { addToCart } from "../redux/reducer/cartReducer";
 
 const ProductDetails: React.FC = ({  }) => {
   
+  const dispatch = useDispatch();
     const { id } = useParams(); 
     const { data, isLoading, isError } = useProductDetailsQuery(id!); // Fetch product details using id
-    const dispatch = useDispatch();
     const {_id, price, name, photo, stock} = data?.product || {};
+    const [quantity, setQuantity] = useState<number>(1);
     console.log(data);
     useEffect(() => {
         if (isError) {
@@ -22,6 +23,15 @@ const ProductDetails: React.FC = ({  }) => {
             toast.error("Cannot fetch product details");
         }
     })
+    const decrementHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
+    };
+    const incrementHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      setQuantity((prev) => (prev < stock! ? prev + 1 : prev));
+    }
+
 
     const addToCartHandler = (cartItem: CartItem,e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -29,19 +39,7 @@ const ProductDetails: React.FC = ({  }) => {
       dispatch(addToCart(cartItem));
       toast.success("Added to cart");
     };
-    // const handleBuyClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    //     e.preventDefault();
-    //     if (data?.product) {
-    //         handler({
-    //             productId: _id!,
-    //             price: price!,
-    //             name: name!,
-    //             photo: photo!,
-    //             stock: stock!,
-    //             quantity: 1,
-    //         });
-    //     }
-    // };
+
   return (
     <>
        {isLoading ? (
@@ -54,18 +52,19 @@ const ProductDetails: React.FC = ({  }) => {
       />
       <form action="" className="Form">
         <h2>{data?.product.name}</h2>
-
-        <div className="Price">Rs.{data?.product.price}</div>
-         <p style={{padding:"20px 0"}}>Availability:  
-            <b style={{color:data?.product.stock! > 0 ? "rgb(17, 229, 27)" : "red"}}>
-                {data?.product.stock! > 0 ? " In Stock" : "Out of Stock"}
-            </b>
-            </p>
-         <small>SHIPS ON JANUARY 5, 2024</small>
+        <p className="Price">Rs.{data?.product.price}</p>
+        <p><b>Stock:</b> {data?.product.stock}</p>
+        <div>
+          <button onClick={(e) => decrementHandler(e)}>-</button>
+          <p>{quantity}</p>
+          <button onClick={(e) => incrementHandler(e)}>+</button>
+        </div>
+          <small>SHIPS ON JANUARY 5, 2024</small>
           <button 
-            onClick={(e) => addToCartHandler({ productId: _id!, price: price!, name: name!, photo: photo!, stock: stock!, quantity: 1 },e)}
+            onClick={(e) => addToCartHandler({ productId: _id!, price: price!, name: name!, photo: photo!, stock: stock!, quantity: quantity },e)}
            className="Button Primary" type="submit">Add To Cart</button>
-        <p className="Description">Description: <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+           
+        <p className="Description"><b>Description:</b> <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </form>
     </section>
       )

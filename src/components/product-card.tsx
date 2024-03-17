@@ -33,8 +33,8 @@ const ProductCard = ({
       <div className="top" onClick={() => navigate(`/product/${productId}`)}><img src={`${server}/${photo}`} alt={name} /></div>
       <div className="bottom">
         <div className="left">
-          <div className="details">
-            <h5 onClick={() => navigate(`/product/${productId}`)}>{name}</h5>
+          <div className="details" onClick={() => navigate(`/product/${productId}`)}>
+            <h5>{name}</h5>
             <p>Rs.{price}</p>
           </div>
           <div className="buy" onClick={handleBuyClick} >
@@ -62,7 +62,7 @@ const ProductCard = ({
             </tr>
             <tr>
               <th>Category</th>
-              <td>{`: ${category}`}</td>
+              <th>{`${category}`}</th>
             </tr>
             {/* <tr>
               <th>Something</th>

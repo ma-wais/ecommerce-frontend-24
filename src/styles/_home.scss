@@ -30,16 +30,16 @@
 
 
 .wrapper{
-  width: 250px;
-  height: 385px;
+  width: 240px;
+  height: 365px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0;
-  transform: scale(0.95);
+  transform: scale(0.90);
   transition: box-shadow 0.5s, transform 0.5s;
   &:hover{
-    transform: scale(1);
+    transform: scale(.95);
     box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
   }
   
@@ -48,7 +48,7 @@
     height:100%;
     overflow: hidden;
     .top img{
-      height: 300px;
+      height: 280px;
       width:100%;
     }
     .bottom{

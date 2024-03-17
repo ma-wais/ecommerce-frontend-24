@@ -41,14 +41,13 @@ const Header = ({ user }: PropsType) => {
 
   return (
       <div className='Nav'>
-        <div className='logo'>
+        <div className='logo' onClick={() => setIsOpen(false)}>
           <Link to="/">   <img id="logoImage" src={logo} alt="Not" />  </Link>
         </div>
-        <div>
-            <Link className="navlinks" to="/#" onClick={() => setIsOpen(false)}>Home</Link>
-            
+        <div >
+            {/* <Link className="navlinks" to="/#" >Home</Link> */}
             <div style={{position:"relative", display:"inline"}}>
-            <button style={{backgroundColor:"transparent",display:"inline", color:"black"}} onClick={() => setIsOpen2((prev) => !prev)}>
+            <button className="navlinks" style={{backgroundColor:"transparent",display:"inline", color:"black"}} onClick={() => setIsOpen2((prev) => !prev)}>
               Categories
             </button>
             <dialog open={isOpen2} className="dialog">
