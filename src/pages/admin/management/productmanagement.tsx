@@ -112,7 +112,7 @@ const Productmanagement = () => {
               ) : (
                 <span className="red"> Not Available</span>
               )}
-              <h3>₹{price}</h3>
+              <h3>Rs.{price}</h3>
             </section>
             <article>
               <button className="product-delete-btn" onClick={deleteHandler}>
