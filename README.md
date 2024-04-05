@@ -1,9 +1,9 @@
-Ecommerce App - React Native Frontend with Redux Toolkit
+# Ecommerce App - React Native Frontend with Redux Toolkit
 Ecommerce App
 
 This project is a React Native frontend for an e-commerce app, built using Redux Toolkit for state management. It utilizes various libraries including RTK, Axios, Stripe, React Navigation, and React Native Toast, among others.
 
-Features
+## Features
 Redux Toolkit (RTK): Efficient state management with simplified Redux tasks.
 Axios: Making HTTP requests to the server and handling responses.
 Stripe: Secure and seamless payment processing.
