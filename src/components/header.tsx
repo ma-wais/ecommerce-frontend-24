@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import toast from "react-hot-toast";
 import logo from '../assets/logo.png'
-import { BiSearchAlt, BiUserCircle } from "react-icons/bi";
+import { BiSearchAl } from "react-icons/bi";
 import { useCategoriesQuery } from "../redux/api/productAPI";
 
 
