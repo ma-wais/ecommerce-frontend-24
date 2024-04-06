@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import toast from "react-hot-toast";
 import logo from '../assets/logo.png'
-import { BiSearchAlt } from "react-icons/bi";
+import { BiSearchAlt, BiUserCircle } from "react-icons/bi";
 import { useCategoriesQuery } from "../redux/api/productAPI";
 
 
@@ -50,16 +50,15 @@ const Header = ({ user }: PropsType) => {
             <button className="navlinks" onClick={() => setIsOpen2((prev) => !prev)}>
               Categories
             </button>
-            <dialog open={isOpen2} className="dialog">
-              <div style={{display:"flex", flexDirection:"column"}}>
-              {!loadingCategories &&
-              categoriesResponse?.categories.map((i) => (
-                <Link key={i} to={`/search`} onClick={() => setIsOpen2(false)}>
-                  {i.toUpperCase()}
-                </Link>
-              ))}
-              </div>
-            </dialog>
+              <dialog open={isOpen2} className="dialog">
+                <div style={{display:"flex", flexDirection:"column"}}>
+                  {!loadingCategories && categoriesResponse?.categories.map((i) => (
+                    <Link key={i} to={`/search/category/${i.toLowerCase()}`} onClick={() => setIsOpen2(false)}>
+                      {i.toUpperCase()}
+                    </Link>
+                  ))}
+                </div>
+              </dialog>
             </div>
             <Link className="navlinks" to="/#">Featured</Link>
             <Link className="navlinks" to="/#">Redmi Phones</Link>
@@ -77,6 +76,8 @@ const Header = ({ user }: PropsType) => {
             <div style={{position:"relative", display:"inline"}}>
             <button style={{backgroundColor:"transparent",display:"inline"}} onClick={() => setIsOpen((prev) => !prev)}>
               <img src={user?.photo} alt="" style={{borderRadius:"50%", height:"35px"}}/>
+
+                {/* <BiUserCircle /> */}
             </button>
             <dialog open={isOpen} className="dialog">
               <div>

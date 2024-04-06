@@ -29,13 +29,13 @@ const Home = () => {
         {info?.images.map((image, index) => (
           <SwiperSlide key={index}>
             <div className="slide-container" style={{ backgroundImage: `url(${image})` }}>
-            <div className="container">
-              <h1 className="text"><p>{info?.price[index]}</p><span>{info?.text[index]}</span></h1>
-              <h1 className="text"><p>{info?.price2[index]}</p><span>{info?.text2[index]}</span></h1>
-              <h1 className="text"><p>{info?.price3[index]}</p><span>{info?.text3[index]}</span></h1>
-              <h1 className="text"><p>{info?.price4[index]}</p><span><a>{info?.text4[index]}</a></span></h1>
-              <h1 className="text"><p>{info?.price5[index]}</p><span><a>{info?.text5[index]}</a></span></h1>
-            </div>
+              <div className="container">
+                <h1 className="text"><p>{info?.price[index]}</p><span>{info?.text[index]}</span></h1>
+                <h1 className="text"><p>{info?.price2[index]}</p><span>{info?.text2[index]}</span></h1>
+                <h1 className="text"><p>{info?.price3[index]}</p><span>{info?.text3[index]}</span></h1>
+                <h1 className="text"><p>{info?.price4[index]}</p><span><a>{info?.text4[index]}</a></span></h1>
+                <h1 className="text"><p>{info?.price5[index]}</p><span><a>{info?.text5[index]}</a></span></h1>
+              </div>
             </div>
           </SwiperSlide>
         ))}
