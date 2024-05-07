@@ -30,7 +30,7 @@ const ProductCard = ({
   return (
   <div className="wrapper">
     <div className="container">
-      <div className="top" onClick={() => navigate(`/product/${productId}`)}><img src={`${server}/${photo}`} alt={name} /></div>
+      <div className="top" style={{ backgroundImage: `url(${server}/${photo})` }}onClick={() => navigate(`/product/${productId}`)}></div>
       <div className="bottom">
         <div className="left">
           <div className="details" onClick={() => navigate(`/product/${productId}`)}>
@@ -44,7 +44,7 @@ const ProductCard = ({
       </div>
     </div>
     <div className="inside">
-      <div className="icon"><FaInfo /></div>
+      <div className="icon"><FaInfo className="info" /></div>
       <div className="contents">
         <table>
           <tbody> 

@@ -52,7 +52,7 @@ $color3: rgb(0, 104, 136);
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.2rem;
   background: #fff;
 
   /* Center slide text vertically */
@@ -67,6 +67,7 @@ $color3: rgb(0, 104, 136);
 @import "login";
 @import "search";
 @import "footer";
+@import "productCard";
 @import "productDetails";
 @import "admin-styles/dashboard";
 @import "admin-styles/products";
@@ -113,6 +114,11 @@ $color3: rgb(0, 104, 136);
       cursor: pointer !important;
     }
   }
+  .profileImg{
+    width: 30px;
+    border-radius: 50%;
+    transform: translate(0, 5px);
+  }
     dialog{
       position: absolute;
       border: none;
@@ -148,7 +154,6 @@ $color3: rgb(0, 104, 136);
   height: 90px;
   margin-left: 25px;
   cursor: pointer;
-  position: relative;
 }
 #logoImage{
   height: 100%;
@@ -334,7 +339,7 @@ $color3: rgb(0, 104, 136);
   margin-left: 80%;
   display: block;
   padding: 0.75rem;
-  font-size: 25px;
+  font-size: 1.8rem;
   border: none;
   outline: none;
   cursor: pointer;
@@ -401,4 +406,5 @@ $color3: rgb(0, 104, 136);
   .navlinks{
     display: none;
   }
+
 }

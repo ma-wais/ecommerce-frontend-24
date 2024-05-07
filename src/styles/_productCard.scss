@@ -1,0 +1,130 @@
+.wrapper{
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0;
+    width: 230px;
+    transform: scale(0.90);
+    transition: box-shadow 0.5s, transform 0.5s;
+    &:hover{
+      transform: scale(.95);
+      box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .container{
+      width:100%;
+      height:100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+  
+      .top{
+        height: 290px;
+        width: 100%;
+        background-size: cover;
+        background-position: center ;
+      }
+      .bottom{
+        width: 100%;
+        height: 85px;
+        transition: transform 0.5s;
+        p{
+          font-size: 15px;
+          font-weight: 500;
+          margin: 0%;
+  
+        }
+        .left{
+          height:100%;
+          width: 100%;
+          background: #f4f4f4;
+          .details{
+            padding: 10px;
+            float: left;
+            width: 70%;
+          }
+          .buy{
+            width: 26%;
+            float:right;
+            height:100%;
+            background: #f1f1f1;
+            transition: background 0.5s;
+            border-left:solid thin rgba(0,0,0,0.1);
+            svg{
+              font-size:26px;
+              margin:34% 30%;
+              color: #254053;
+              transition: transform 0.5s;
+            }
+            &:hover{
+              background: #A6CDDE;
+            }
+            &:hover svg{
+              transform: translateY(5px);
+              color:#00394B;
+            }
+          }
+        }
+      }
+    }
+    
+    .inside{
+      z-index:9;
+      background: #92879B;
+      width:130px;
+      height:130px;
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      border-radius: 0px 0px 200px 200px;
+      transition: all 0.5s, border-radius 2s, top 1s;
+      overflow: hidden;
+      transform: translateY(-5px);
+      .icon{
+        position:absolute;
+        right:85px;
+        top:85px;
+        color:white;
+        opacity: 1;
+      }
+      &:hover{
+        width:100%;
+        right:0;
+        top:0;
+        border-radius: 0;
+        height:80%;
+        .icon{
+          opacity: 0;
+          right:15px;
+          top:15px;
+        }
+        .contents{
+          opacity: 1;
+          transform: scale(1);
+          transform: translateY(0);
+        }
+      }
+      .info{
+        font-size: 16px;
+      }
+      .contents{
+        padding: 5%;
+        opacity: 0;
+        transform: scale(0.5);
+        transform: translateY(-200%);
+        transition: opacity 0.2s, transform 0.8s;
+        table{
+          text-align:left;
+          width:100%;
+        }
+        h1, p, table{
+          color: white;
+          font-weight: 300;
+        }
+        th{
+          font-size: 16px !important;
+        }
+      
+      }
+    }
+  }
