@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import logo from "../assets/logo.png";
 import { BiSearchAlt } from "react-icons/bi";
 import { useCategoriesQuery } from "../redux/api/productAPI";
-import { FaRegUserCircle } from "react-icons/fa";
 
 interface PropsType {
   user: User | null;
