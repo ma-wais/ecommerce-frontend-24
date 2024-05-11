@@ -93,7 +93,7 @@ const Header = ({ user }: PropsType) => {
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <img
-                src={user?.photo ? user?.photo : <FaRegUserCircle />}
+                src={typeof user.photo === 'string' ? user.photo : undefined}
                 alt="user logged in"
                 className="profileImg"
               />
