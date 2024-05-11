@@ -9,6 +9,16 @@ import { MessageResponse } from "../types/api-types";
 import { userExist, userNotExist } from "../redux/reducer/userReducer";
 import { useDispatch } from "react-redux";
 
+interface NewUserRequestBody {
+  name: string;
+  email: string;
+  photo: string;
+  gender?: string;
+  role: string;
+  dob?: string;
+  _id: string;
+}
+
 const Login = () => {
   const dispatch = useDispatch();
   const [gender, setGender] = useState("");
@@ -21,25 +31,37 @@ const Login = () => {
       const provider = new GoogleAuthProvider();
       const { user } = await signInWithPopup(auth, provider);
 
-      console.log({
+      const userData: Partial<{
+        name: string;
+        email: string;
+        photo: string;
+        role: string;
+        _id: string;
+        gender: string; // Make gender non-optional
+        dob: string; // Make dob non-optional
+      }> = {
         name: user.displayName!,
         email: user.email!,
         photo: user.photoURL!,
-        gender,
         role: "user",
-        dob: date,
         _id: user.uid,
-      });
-
-      const res = await login({
-        name: user.displayName!,
-        email: user.email!,
-        photo: user.photoURL!,
-        gender,
-        role: "user",
-        dob: date,
-        _id: user.uid,
-      });
+      };
+  
+  
+      // Include gender if it's not empty
+      if (gender) {
+        userData.gender = gender;
+      }
+  
+      // Include date of birth if it's not empty
+      if (date) {
+        userData.dob = date;
+      }
+  
+      console.log(userData);
+  
+      const res = await login(userData as NewUserRequestBody);
+  
 
       if ("data" in res) {
         toast.success(res.data.message);

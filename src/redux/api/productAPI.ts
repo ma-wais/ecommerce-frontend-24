@@ -7,7 +7,7 @@ import {
   NewProductRequest,
   ProductResponse,
   SearchProductsRequest,
-  SearchProductsResponse,
+  SearchProductsResponse,  
   UpdateProductRequest,
 } from "../../types/api-types";
 

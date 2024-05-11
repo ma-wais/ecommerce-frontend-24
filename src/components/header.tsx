@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import logo from "../assets/logo.png";
 import { BiSearchAlt } from "react-icons/bi";
 import { useCategoriesQuery } from "../redux/api/productAPI";
+import { FaRegUserCircle } from "react-icons/fa";
 
 interface PropsType {
   user: User | null;
@@ -88,11 +89,11 @@ const Header = ({ user }: PropsType) => {
         {user?._id ? (
           <div style={{ position: "relative", display: "inline" }}>
             <button
-              style={{ backgroundColor: "transparent", display: "inline" }}
+              style={{width: "30px",height: "30px"}}
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <img
-                src={user?.photo}
+                src={user?.photo ? user?.photo : <FaRegUserCircle />}
                 alt="user logged in"
                 className="profileImg"
               />
@@ -104,7 +105,6 @@ const Header = ({ user }: PropsType) => {
                     Admin
                   </Link>
                 )}
-
                 <Link
                   style={{ display: "block" }}
                   onClick={() => setIsOpen(false)}

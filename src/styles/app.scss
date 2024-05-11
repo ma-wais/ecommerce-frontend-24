@@ -7,14 +7,14 @@ html{
   font-weight: 400;
 }
 ::-webkit-scrollbar-track{
- 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+ 	-webkit-box-shadow: inset 0 0 6px rgba(41, 41, 41, 0.3); 
 }
 ::-webkit-scrollbar{
 	width: 6px;
  	background-color: #F5F5F5; 
 }
 ::-webkit-scrollbar-thumb{
-	background-color: #535252;
+	background: linear-gradient(to bottom, rgb(99, 99, 99) 0%, rgb(185, 185, 185) 50%, rgb(77, 77, 77) 100%);
 }
 * {
   margin: 0;
@@ -116,6 +116,7 @@ $color3: rgb(0, 104, 136);
   }
   .profileImg{
     width: 30px;
+    height: 30px;
     border-radius: 50%;
     transform: translate(0, 5px);
   }
@@ -200,7 +201,9 @@ $color3: rgb(0, 104, 136);
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
-  height: 100vh;
+  height: 110vh;
+  overflow-y: scroll;
+  margin-right: 10px;
   background-color: rgb(247, 247, 247);
   > aside {
     width: 100%;
