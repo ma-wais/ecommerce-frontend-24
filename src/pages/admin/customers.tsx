@@ -84,7 +84,7 @@ const Customers = () => {
           ),
           name: i.name,
           email: i.email,
-          gender: i.gender,
+          gender: i.gender ?? "",
           role: i.role,
           action: (
             <button onClick={() => deleteHandler(i._id)}>
