@@ -1,8 +1,8 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import Header from "./components/header";
 import Loader from "./components/loader";
 import Footer from "./pages/footer";
@@ -12,6 +12,7 @@ import { getUser } from "./redux/api/userAPI";
 import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { RootState } from "./redux/store";
 import ProductDetails from "./pages/ProductDetails";
+import AllCoupons from "./pages/admin/apps/allCoupons";
 
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
@@ -37,13 +38,31 @@ const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
 const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
 const TransactionManagement = lazy(() => import("./pages/admin/management/transactionmanagement"));
 
+const Layout = ({ children } : { children: React.ReactNode }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const { user, loading } = useSelector((state: RootState) => state.userReducer);
+  const [isOpen2, setIsOpen2] = useState<boolean>(false);
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <>
+      {!isAdminRoute && <Header user={user} isOpen2={isOpen2} setIsOpen2={setIsOpen2} />}
+      {children}
+      {!isAdminRoute && <Footer />}
+      <Toaster position="bottom-center" />
+    </>
+  );
+};
+
 const App = () => {
   const { user, loading } = useSelector(
     (state: RootState) => state.userReducer
   );
-
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -57,8 +76,7 @@ const App = () => {
     <Loader />
   ) : (
     <Router>
-      {/* Header */}
-      <Header user={user} />
+      <Layout>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -97,6 +115,7 @@ const App = () => {
             <Route path="/admin/app/coupon" element={<Coupon />} />
             <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
             <Route path="/admin/app/toss" element={<Toss />} />
+            <Route path="/admin/app/coupons" element={<AllCoupons />}/>
             {/* Management */}
             <Route path="/admin/product/new" element={<NewProduct />} />
             <Route path="/admin/product/:id" element={<ProductManagement />} />
@@ -106,8 +125,8 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      </Layout>
       <Toaster position="bottom-center" />
-      <Footer />
     </Router>
   );
 };

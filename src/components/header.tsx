@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaShoppingBag, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useState } from "react";
 import { User } from "../types/types";
@@ -10,12 +10,16 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useCategoriesQuery } from "../redux/api/productAPI";
 
 interface PropsType {
-  user: User | null;
+  user: User | null; // Assuming UserType is the type/interface for your user object
 }
 
-const Header = ({ user }: PropsType) => {
+interface HeaderProps extends PropsType {
+  isOpen2: boolean;
+  setIsOpen2: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
+  const params = useParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isOpen2, setIsOpen2] = useState<boolean>(false);
 
   const {
     data: categoriesResponse,
@@ -33,6 +37,9 @@ const Header = ({ user }: PropsType) => {
       toast.error("Sign Out Fail");
     }
   };
+  if ("admin" in params) {
+    return null;
+  }
 
   return (
     <div className="Nav">
@@ -48,7 +55,7 @@ const Header = ({ user }: PropsType) => {
             Categories
           </button>
           <dialog open={isOpen2} className="dialog">
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className="categories">
               {!loadingCategories &&
                 categoriesResponse?.categories.map((i) => (
                   <Link
@@ -66,16 +73,14 @@ const Header = ({ user }: PropsType) => {
           Featured
         </Link>
         <Link className="navlinks" to="/#">
-          Redmi Phones
+          Phones
         </Link>
-        {/* <Link className="navlinks" to="/#">TV</Link> */}
         <Link className="navlinks" to="/#">
           Laptops
         </Link>
-        {/* <Link className="navlinks" to="/#">Fitness & Lifestyle</Link> */}
-        <Link className="navlinks" to="/#">
+        {/* <Link className="navlinks" to="/#">
           Accessories
-        </Link>
+        </Link> */}
       </div>
 
       <div className="nav">
@@ -88,7 +93,7 @@ const Header = ({ user }: PropsType) => {
         {user?._id ? (
           <div style={{ position: "relative", display: "inline" }}>
             <button
-              style={{width: "30px",height: "30px"}}
+              style={{width: "30px",height: "30px", overflow: "hidden"}}
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <img

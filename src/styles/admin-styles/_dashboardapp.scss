@@ -1,7 +1,9 @@
 .dashboard-app-container {
   background-color: white;
   padding: 4rem;
-
+  >h1{
+    text-align: center;
+  }
   > section {
     @include flex(column, center, center, 2rem);
     height: 100%;

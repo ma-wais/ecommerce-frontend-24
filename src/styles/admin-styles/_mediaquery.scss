@@ -31,6 +31,12 @@
 }
 
 @media screen and (width<= 768px) {
+  html{
+    font-size: 10px;
+  }
+  .navlinks{
+    display: none;
+  }
   .cart {
     display: block;
     padding: 2rem;

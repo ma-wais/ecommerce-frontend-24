@@ -58,8 +58,6 @@ const Login = () => {
         userData.dob = date;
       }
   
-      console.log(userData);
-  
       const res = await login(userData as NewUserRequestBody);
   
 
@@ -104,7 +102,7 @@ const Login = () => {
         <div>
           <p>Already Signed In Once</p>
           <button onClick={loginHandler}>
-            <FcGoogle /> <span>Sign in with Google</span>
+            <FcGoogle /> <span>Quick Sign in</span>
           </button>
         </div>
       </main>

@@ -16,7 +16,7 @@ const ProductDetails: React.FC = ({  }) => {
     const { data, isLoading, isError } = useProductDetailsQuery(id!); // Fetch product details using id
     const {_id, price, name, photo, stock} = data?.product || {};
     const [quantity, setQuantity] = useState<number>(1);
-    console.log(data);
+
     useEffect(() => {
         if (isError) {
             // const err = error as CustomError;

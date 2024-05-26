@@ -1,12 +1,21 @@
 import { FormEvent, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
+import { useNewCouponMutation } from "../../../redux/api/paymentAPI";
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../../redux/store";
+import { Link } from "react-router-dom";
 
 const allLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const allNumbers = "1234567890";
 const allSymbols = "!@#$%^&*()_+";
 
 const Coupon = () => {
-  const [size, setSize] = useState<number>(8);
+  // const { user } = useSelector((state: RootState) => state.userReducer);
+  const [newCouponMutation] = useNewCouponMutation();
+
+
+  const [size, setSize] = useState<number>(100);
   const [prefix, setPrefix] = useState<string>("");
   const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
   const [includeCharacters, setIncludeCharacters] = useState<boolean>(false);
@@ -27,7 +36,7 @@ const Coupon = () => {
       return alert("Please Select One At Least");
 
     let result: string = prefix || "";
-    const loopLength: number = size - result.length;
+    const loopLength: number = 10 - result.length;
 
     for (let i = 0; i < loopLength; i++) {
       let entireString: string = "";
@@ -42,6 +51,13 @@ const Coupon = () => {
     setCoupon(result);
   };
 
+  const saveCoupon = async (e : FormEvent) => {
+    e.preventDefault();
+    await newCouponMutation({ coupon: coupon, amount: size });
+    toast.success("Coupon Added");
+    setCoupon("");
+  }
+  
   useEffect(() => {
     setIsCopied(false);
   }, [coupon]);
@@ -51,6 +67,7 @@ const Coupon = () => {
       <AdminSidebar />
       <main className="dashboard-app-container">
         <h1>Coupon</h1>
+        <Link to="/admin/app/coupons" style={{color: "rgb(0,115,255)" }}>View all Coupons</Link>
         <section>
           <form className="coupon-form" onSubmit={submitHandler}>
             <input
@@ -58,16 +75,15 @@ const Coupon = () => {
               placeholder="Text to include"
               value={prefix}
               onChange={(e) => setPrefix(e.target.value)}
-              maxLength={size}
+              maxLength={10}
             />
 
             <input
               type="number"
-              placeholder="Coupon Length"
-              value={size}
+              placeholder="Amount"
               onChange={(e) => setSize(Number(e.target.value))}
-              min={8}
-              max={25}
+              min={100}
+              max={500000}
             />
 
             <fieldset>
@@ -96,7 +112,9 @@ const Coupon = () => {
             </fieldset>
             <button type="submit">Generate</button>
           </form>
-
+          <div className="coupon-form">
+            <button style={{backgroundColor: 'gainsboro', color: 'black', width: '50%', margin: 'auto'}} onClick={saveCoupon}>Save Coupon</button>
+          </div>
           {coupon && (
             <code>
               {coupon}{" "}

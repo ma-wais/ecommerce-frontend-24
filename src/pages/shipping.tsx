@@ -33,7 +33,7 @@ const Shipping = () => {
     e.preventDefault();
 
     dispatch(saveShippingInfo(shippingInfo));
-
+    toast.success("Payment in progress");
     try {
       const { data } = await axios.post(
         `${server}/api/v1/payment/create`,

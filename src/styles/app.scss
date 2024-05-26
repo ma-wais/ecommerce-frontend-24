@@ -44,12 +44,10 @@ $color3: rgb(0, 104, 136);
 .green {
   color: rgb(0, 195, 0);
 }
-
 .swiper {
   width: 100%;
   height: 100%;
 }
-
 .swiper-slide {
   text-align: center;
   font-size: 1.2rem;
@@ -60,7 +58,9 @@ $color3: rgb(0, 104, 136);
   // justify-content: center;
   // align-items: center;
 }
+
 @import "admin-styles/mixin";
+@import "header";
 @import "home";
 @import "cart";
 @import "shipping";
@@ -93,89 +93,6 @@ $color3: rgb(0, 104, 136);
   text-align: center;
 }
 
-.Nav {
-  position: sticky;
-  width: 100%;
-  padding: 1vmax;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-  z-index: 500;
-  button  {
-    margin: 0 1vmax ;
-    background-color: #fff;
-    border: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 1.2rem;
-    &:hover{
-      color: orange !important;
-      cursor: pointer !important;
-    }
-  }
-  .profileImg{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    transform: translate(0, 5px);
-  }
-    dialog{
-      position: absolute;
-      border: none;
-      div{
-        padding-top: 10px;
-        :link{
-          margin: 10px;
-        }
-        
-      }
-  }
-  
-}
-.nav{
-  margin-right: 40px;
-   svg{
-    fill:gray ;
-    font-size: 1.5rem;
-    margin: 0 10px;
-  }
-}
-.navlinks {
-  text-decoration: none;
-  margin: 0 1vmax ;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
-  font-size: 1.12rem;
-&:hover{
-  color: orange;
-}}
-.logo{
-  width: 90px;
-  height: 90px;
-  margin-left: 25px;
-  cursor: pointer;
-}
-#logoImage{
-  height: 100%;
-  width: 100%;
-}
-.nav svg{
-  fill: rgb(94, 91, 91);
-  &:hover{
-    fill: black;
-  }
-}
-.dialog{
-  position: absolute;
-  border-radius: 8px;
-  div{
-    padding: 10px 20px 10px 10px;
-    :link{
-      border-bottom: 1px solid rgb(146, 146, 146);
-    }
-  }
-}
 .not-found {
   height: 80vh;
   @include flex(column);
@@ -329,12 +246,12 @@ $color3: rgb(0, 104, 136);
   cursor: pointer;
   color: rgba(44, 104, 255);
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 17px;
+  left: 17px;
   font-size: 2rem;
-  background-color: white;
+  background-color: transparent;
   border-radius: 10px;
-  z-index: 9;
+  z-index: 10;
 }
 
 #close-sidebar {
@@ -400,14 +317,4 @@ $color3: rgb(0, 104, 136);
   100% {
     opacity: 0.6;
   }
-}
-
-@media screen and (width<= 700px) {
-  html{
-    font-size: 10px;
-  }
-  .navlinks{
-    display: none;
-  }
-
 }

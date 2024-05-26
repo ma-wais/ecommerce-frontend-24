@@ -15,11 +15,14 @@ import {
   RiShoppingBag3Fill,
   RiCloseFill
 } from "react-icons/ri";
-import { Link, Location, useLocation } from "react-router-dom";
+import { Link, Location, useLocation, useNavigate } from "react-router-dom";
 import { IconType } from "react-icons";
+import logo from "../../assets/logo.png";
 
 const AdminSidebar = () => {
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [phoneActive, setPhoneActive] = useState<boolean>(
@@ -65,7 +68,7 @@ const AdminSidebar = () => {
             <RiCloseFill />
           </button>
         )}
-        <h2>Logo.</h2>
+        <img style={{marginLeft: "20px", cursor: "pointer"}} width={80} src={logo} alt="Ramie" onClick={() => navigate("/")}/>{" "}
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />

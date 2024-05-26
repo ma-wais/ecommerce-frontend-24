@@ -139,7 +139,7 @@ export const DoughnutChart = ({
         display: legends,
         position: "bottom",
         labels: {
-          padding: 40,
+          padding: 30,
         },
       },
     },
