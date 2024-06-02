@@ -22,6 +22,7 @@ const Shipping = () => {
     country: "",
     pinCode: "",
   });
+  const [disabled, setDisabled] = useState(false);
 
   const changeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -46,10 +47,13 @@ const Shipping = () => {
           },
         }
       );
+      setDisabled(true);
+      setTimeout(() => {
+        navigate("/pay", {
+          state: data.clientSecret,
+        });
+      }, 3000);
 
-      navigate("/pay", {
-        state: data.clientSecret,
-      });
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -115,7 +119,7 @@ const Shipping = () => {
           onChange={changeHandler}
         />
 
-        <button type="submit">Pay Now</button>
+        <button type="submit" disabled={disabled}>Pay Now</button>
       </form>
     </div>
   );

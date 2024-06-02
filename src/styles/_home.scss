@@ -23,70 +23,113 @@
   background-position: center;
   background-size:cover;
   height: 90vh;
+  position: relative;
   overflow: hidden;
 
-  .container2 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100%;
-    }
-    .container {
-      overflow: hidden;
+  .content{
+    position: absolute;
+    z-index: 1;
+    color: rgb(238, 237, 237);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 5%;
+    
+      h1{
+        font-size: 3.3rem;
+        font-weight: 600;
+        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+      }
+      p{
+        font-size: 1.2rem;
+        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+      }
+      .button{
+        width: 50%;
+        padding: 10px;
+        font-size: 1.2rem;
+        background-color: #a1a1a1;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: all 0.5s;
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover{
+          background-color: #fff;
+          color: #464545;
+          transform: translateY(-3px); ;
+          transition: all 0.5s;
+        }
+      }
     }
 
-    .text {
-      font-size: 7.3rem;
-      letter-spacing: -.01em;
-      line-height: 100%;
-      
-      color: rgb(182, 182, 182, 0.2);
-      background: linear-gradient(to right, #b6b6b6, #b6b6b6) no-repeat;
-      -webkit-background-clip: text;
-      background-clip: text;
-      background-size: 0%;
-      transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s;
-      // border-bottom: 1px solid #2F2B28;
-      
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      position: relative;
-    }
-  p{
-    display:inline-block;
-    margin:0 40% 0 15%;
-  }
-    span {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: #464646;
-      display:inline-block;
-      padding: 0 40% 0 15%;
-      color: #d4d4d4;
-      
-      clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
-      transform-origin: center;
-      transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
-      
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+  // .container2 {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: flex-start;
+  //     height: 100%;
+  //   }
+  //   .container {
+  //     overflow: hidden;
+  //   }
 
-    .text:hover > span {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-    .text:hover > p{
-      opacity: 0;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+  //   .text {
+  //     font-size: 7.3rem;
+  //     letter-spacing: -.01em;
+  //     line-height: 100%;
+      
+  //     color: rgb(182, 182, 182, 0.2);
+  //     background: linear-gradient(to right, #b6b6b6, #b6b6b6) no-repeat;
+  //     -webkit-background-clip: text;
+  //     background-clip: text;
+  //     background-size: 0%;
+  //     transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s;
+  //     // border-bottom: 1px solid #2F2B28;
+      
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: flex-start;
+  //     justify-content: center;
+  //     position: relative;
+  //   }
+  // p{
+  //   display:inline-block;
+  //   margin:0 40% 0 15%;
+  // }
+  //   span {
+  //     position: absolute;
+  //     width: 100%;
+  //     height: 100%;
+  //     background-color: #464646;
+  //     display:inline-block;
+  //     padding: 0 40% 0 15%;
+  //     color: #d4d4d4;
+      
+  //     clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  //     transform-origin: center;
+  //     transition: all cubic-bezier(.1,.5,.5,1) 0.4s;
+      
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //   }
+
+  //   .text:hover > span {
+  //     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  //   }
+  //   .text:hover > p{
+  //     opacity: 0;
+  //   }
+  //   a {
+  //     text-decoration: none;
+  //     color: inherit;
+  //   }
   }
 }
 

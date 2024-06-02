@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Skeleton } from "../components/loader";
 import ProductCard from "../components/product-card";
 import { useLatestProductsQuery } from "../redux/api/productAPI";
@@ -12,9 +12,8 @@ import info from "../components/data.json";
 
 const Home = () => {
   const { data, isLoading, isError } = useLatestProductsQuery("");
-
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const addToCartHandler = (cartItem: CartItem) => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
@@ -32,7 +31,7 @@ const Home = () => {
               className="slide-container"
               style={{ backgroundImage: `url(${image})` }}
             >
-              <div className="container">
+              {/* <div className="container">
                 <h1 className="text">
                   <p>{info?.price[index]}</p>
                   <span>{info?.text[index]}</span>
@@ -57,6 +56,11 @@ const Home = () => {
                     <a>{info?.text5[index]}</a>
                   </span>
                 </h1>
+              </div> */}
+              <div className='content'>
+                <h1>New Arrivals</h1>
+                <p>Amplify Reimagined</p>
+                <button className='button' onClick={() => navigate('/search')}>Shop it!</button>
               </div>
             </div>
           </SwiperSlide>

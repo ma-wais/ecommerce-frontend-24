@@ -12,7 +12,6 @@ import { useCategoriesQuery } from "../redux/api/productAPI";
 interface PropsType {
   user: User | null; // Assuming UserType is the type/interface for your user object
 }
-
 interface HeaderProps extends PropsType {
   isOpen2: boolean;
   setIsOpen2: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,6 +19,9 @@ interface HeaderProps extends PropsType {
 const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
   const params = useParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const links = [
+    "Featured", "Phones", "Laptops", "Wallpaper"
+  ]
 
   const {
     data: categoriesResponse,
@@ -51,7 +53,7 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
       </div>
       <div>
         <div style={{ position: "relative", display: "inline" }}>
-          <button style={{ fontSize: "1.1rem" }} className="navlinks" onClick={() => setIsOpen2((prev) => !prev)} >
+          <button  className="navlinks" onClick={() => setIsOpen2((prev) => !prev)} >
             Categories
           </button>
           <dialog open={isOpen2} className="dialog">
@@ -69,18 +71,15 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
             </div>
           </dialog>
         </div>
-        <Link className="navlinks" to="/#">
-          Featured
-        </Link>
-        <Link className="navlinks" to="/#">
-          Phones
-        </Link>
-        <Link className="navlinks" to="/#">
-          Laptops
-        </Link>
-        {/* <Link className="navlinks" to="/#">
-          Accessories
-        </Link> */}
+        {links.map((i) => (
+          <Link
+            key={i}
+            className="navlinks slim"
+            to={`/search/category/${i.toLowerCase()}`}
+          >
+            {i}
+          </Link>
+        ))}
       </div>
 
       <div className="nav">
@@ -93,7 +92,7 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
         {user?._id ? (
           <div style={{ position: "relative", display: "inline" }}>
             <button
-              style={{width: "30px",height: "30px", overflow: "hidden"}}
+              style={{width: "30px",height: "35px", overflow: "hidden"}}
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <img
