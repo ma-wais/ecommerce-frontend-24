@@ -107,7 +107,7 @@ const Shipping = () => {
           onChange={changeHandler}
         >
           <option value="">Choose Country</option>
-          <option value="india">India</option>
+          <option value="pakistan">Pakistan</option>
         </select>
 
         <input

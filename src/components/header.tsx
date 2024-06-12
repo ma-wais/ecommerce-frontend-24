@@ -20,15 +20,17 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
   const params = useParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const links = [
-    "Featured", "Phones", "Laptops", "Wallpaper"
+    "Featured", "Wallpaper"
   ]
-
   const {
     data: categoriesResponse,
     isLoading: loadingCategories,
     // isError,
     // error,
-  } = useCategoriesQuery("");
+    } = useCategoriesQuery("");
+
+    const categories = categoriesResponse?.categories; // Adjust this line based on the actual structure
+    const topCategories = categories?.slice(0, 7);
 
   const logoutHandler = async () => {
     try {
@@ -59,7 +61,7 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
           <dialog open={isOpen2} className="dialog">
             <div className="categories">
               {!loadingCategories &&
-                categoriesResponse?.categories.map((i) => (
+                topCategories?.map((i) => (
                   <Link
                     key={i}
                     to={`/search/category/${i.toLowerCase()}`}
@@ -68,6 +70,12 @@ const Header = ({ user, isOpen2, setIsOpen2 }: HeaderProps) => {
                     {i.toUpperCase()}
                   </Link>
                 ))}
+                <Link
+                    to={`/search`}
+                    onClick={() => setIsOpen2(false)}
+                  >
+                    More
+                  </Link>
             </div>
           </dialog>
         </div>
